@@ -1,0 +1,920 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:
+linear-gradient(
+180deg,
+#030712,
+#0f172a,
+#1e3a8a
+);
+color:white;
+}
+
+/* Contenedor de la lluvia de estrellas */
+.meteor-shower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.bienvenida{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 80px 10%;
+    min-height: 90vh;
+}
+
+.secreto-estrellas{
+    max-width: 950px;
+    margin: 60px auto;
+    padding: 40px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    text-align: center;
+}
+
+.secreto-estrellas h2{
+    color: #ffd966;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(255,217,102,.5);
+}
+
+.secreto-estrellas p{
+    font-size: 1.1rem;
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+.misterio{
+    margin-top: 25px;
+    padding: 18px;
+    background: rgba(255,217,102,.12);
+    border-left: 5px solid #ffd966;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.curiosidad-secreta{
+    margin-top: 20px;
+    padding: 18px;
+    background: rgba(135,206,250,.12);
+    border-left: 5px solid #87cefa;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.secreto-estrellas blockquote{
+    margin-top: 30px;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #ffd966;
+    text-align: center;
+    border: none;
+}
+
+.secreto-estrellas:hover{
+    transform: translateY(-5px);
+    transition: 0.4s ease;
+}
+
+.estrellas-fugaces{
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 35px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.estrellas-fugaces h2{
+    color: #ffd966;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255,217,102,0.5);
+}
+
+.estrellas-fugaces p{
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.curiosidad,
+.dato-extra{
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.curiosidad{
+    background: rgba(255,217,102,0.15);
+    border-left: 5px solid #ffd966;
+}
+
+.dato-extra{
+    background: rgba(135,206,250,0.15);
+    border-left: 5px solid #87cefa;
+}
+
+.gif-box img{
+    width: 100%;
+    max-width: 500px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.4);
+    transition: transform 0.4s;
+}
+
+.gif-box img:hover{
+    transform: scale(1.05);
+}
+
+.texto{
+    max-width: 600px;
+    color: white;
+}
+
+.etiqueta{
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    padding: 8px 18px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.texto h1{
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #ffd966;
+    text-shadow: 0 0 20px rgba(255,217,102,.6);
+}
+
+.destacado{
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.texto p{
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.frase-magica{
+    margin: 25px 0;
+    padding: 15px;
+    background: rgba(255,217,102,.15);
+    border-left: 4px solid #ffd966;
+    border-radius: 12px;
+    font-style: italic;
+}
+
+.btn-explorar{
+    display: inline-block;
+    margin-top: 20px;
+    background: linear-gradient(45deg,#ffd966,#ffb347);
+    color: #1a1a2e;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-explorar:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(255,217,102,.4);
+}
+
+@media(max-width:768px){
+    .bienvenida{
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .texto h1{
+        font-size: 2.5rem;
+    }
+}
+
+/* Estrellas fugaces */
+.meteor-shower span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.1),
+                0 0 0 8px rgba(255,255,255,0.1),
+                0 0 20px rgba(255,255,255,1);
+    animation: shooting-star 4s linear infinite;
+}
+
+.meteor-shower span::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, transparent);
+}
+
+/* Posiciones y tiempos distintos */
+.meteor-shower span:nth-child(1) {
+    top: 10%;
+    left: 80%;
+    animation-delay: 0s;
+    animation-duration: 3s;
+}
+
+.meteor-shower span:nth-child(2) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 1s;
+    animation-duration: 4s;
+}
+
+.meteor-shower span:nth-child(3) {
+    top: 40%;
+    left: 90%;
+    animation-delay: 2s;
+    animation-duration: 5s;
+}
+
+.meteor-shower span:nth-child(4) {
+    top: 60%;
+    left: 10%;
+    animation-delay: 0.5s;
+    animation-duration: 3.5s;
+}
+
+.meteor-shower span:nth-child(5) {
+    top: 5%;
+    left: 50%;
+    animation-delay: 3s;
+    animation-duration: 4s;
+}
+
+.meteor-shower span:nth-child(6) {
+    top: 75%;
+    left: 70%;
+    animation-delay: 1.5s;
+    animation-duration: 5s;
+}
+
+.meteor-shower span:nth-child(7) {
+    top: 30%;
+    left: 60%;
+    animation-delay: 2.5s;
+    animation-duration: 4.5s;
+}
+
+.meteor-shower span:nth-child(8) {
+    top: 85%;
+    left: 30%;
+    animation-delay: 4s;
+    animation-duration: 3.5s;
+}
+
+.info-extra{
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.info-extra h2{
+    color: #ffd966;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.info-extra p{
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.dato-curioso{
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 217, 102, 0.15);
+    border-left: 5px solid #ffd966;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+/* Animación */
+@keyframes shooting-star {
+    0% {
+        transform: rotate(315deg) translateX(0);
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(315deg) translateX(-1200px);
+        opacity: 0;
+    }
+}
+
+
+/* estrellas animadas */
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(white 1px,transparent 1px);
+background-size:50px 50px;
+opacity:.25;
+animation:fondo 15s linear infinite;
+z-index:-1;
+}
+
+@keyframes fondo{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(100px);
+}
+
+}
+
+header{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(10px);
+padding:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+width:55px;
+border-radius:50%;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+transition:.3s;
+}
+
+nav a:hover{
+color:#60a5fa;
+}
+
+.bienvenida{
+display:grid;
+grid-template-columns:1fr 2fr;
+gap:20px;
+padding:40px;
+}
+
+.gif-box img{
+width:100%;
+border-radius:15px;
+}
+
+.mini-galeria{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px;
+}
+
+.mini-galeria img,
+.galeria div{
+  border-radius: 15px;
+  transition: .4s;
+  
+  width: 100%;          
+  height: 400px;        
+  object-fit: cover;    
+}
+
+.mini-galeria img:hover,
+.galeria div:hover{
+  transform: translateY(-10px);
+}
+
+/* ==========================
+   SECCIÓN DEL CUENTO
+========================== */
+
+.cuento {
+    padding: 4rem 2rem;
+    background: linear-gradient(
+        to bottom,
+        #081225,
+        #102d5e,
+        #0f1c3d
+    );
+    color: white;
+}
+
+.cuento h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+/* CONTENEDOR */
+
+.cuento-contenedor {
+    max-width: 850px;
+    margin: auto;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 2.5rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* PÁRRAFOS */
+
+.cuento-contenedor p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+/* CITA */
+
+.cuento blockquote {
+    background: rgba(255, 215, 0, 0.15);
+    border-left: 5px solid #ffd700;
+    padding: 1rem;
+    margin: 1.8rem 0;
+    border-radius: 10px;
+    font-style: italic;
+    text-align: center;
+    color: #fff6c4;
+}
+
+/* MENSAJE FINAL */
+
+.mensaje-final {
+    margin-top: 2rem;
+    padding: 1rem;
+    text-align: center;
+    background: linear-gradient(
+        45deg,
+        rgba(255,215,0,0.2),
+        rgba(255,255,255,0.15)
+    );
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffd700;
+    animation: brillo 2s infinite alternate;
+}
+
+/* ANIMACIÓN */
+
+@keyframes brillo {
+    from {
+        box-shadow: 0 0 10px rgba(255,215,0,0.2);
+    }
+
+    to {
+        box-shadow: 0 0 25px rgba(255,215,0,0.7);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .cuento h2 {
+        font-size: 2rem;
+    }
+
+    .cuento-contenedor {
+        padding: 1.5rem;
+    }
+
+    .cuento-contenedor p {
+        font-size: 1rem;
+    }
+}
+
+.titulo-principal{
+text-align:center;
+padding:60px;
+font-size:2rem;
+}
+
+.estadisticas{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+padding:30px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+padding:25px;
+border-radius:15px;
+backdrop-filter:blur(10px);
+}
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    padding:20px;
+}
+
+.galeria div{
+    height:180px;
+    background:#334155;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.galeria img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.galeria div:hover{
+transform:translateY(-8px) scale(1.05);
+box-shadow:
+0 0 15px #00d4ff,
+0 0 30px #7b2cff,
+0 0 45px #ff00ff;
+}
+ 
+.galeria div:hover img{
+filter:
+brightness(1.2)
+saturate(1.4)
+drop-shadow(0 0 10px #00d4ff)
+drop-shadow(0 0 20px #7b2cff);
+}
+
+.glosario-universo{
+    padding: 70px 20px;
+}
+
+.titulo-glosario{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.titulo-glosario h2{
+    font-size: 3rem;
+    color: #FFD700;
+    text-shadow: 0 0 15px #FFD700;
+    margin-bottom: 10px;
+}
+
+.titulo-glosario p{
+    color: #e6e6e6;
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.1rem;
+}
+
+.contenedor-glosario{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+}
+
+.card-glosario{
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: .4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-glosario::after{
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,.25),
+        transparent 70%
+    );
+    opacity:0;
+    transition:.5s;
+}
+
+.card-glosario:hover::after{
+    opacity:1;
+}
+
+.card-glosario:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255,215,0,.7);
+    border-color:#FFD700;
+}
+
+.card-glosario span{
+    font-size: 3rem;
+    display:block;
+    margin-bottom:15px;
+}
+
+.card-glosario h3{
+    color:#FFD700;
+    margin-bottom:10px;
+}
+
+.card-glosario p{
+    color:white;
+    line-height:1.6;
+}
+
+@media(max-width:768px){
+
+    .titulo-glosario h2{
+        font-size:2.2rem;
+    }
+
+    .contenedor-glosario{
+        grid-template-columns:1fr;
+    }
+}
+
+.zona-glosario{
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.zona-glosario h2{
+    font-size: 3rem;
+    color: #b388ff;
+    margin-bottom: 10px;
+    text-shadow:
+        0 0 10px #b388ff,
+        0 0 20px #7c4dff;
+}
+
+.intro-glosario{
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: #d8d8ff;
+    font-size: 1.1rem;
+}
+
+.glosario-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+}
+
+.item-glosario{
+    background: linear-gradient(
+        145deg,
+        rgba(32,33,79,.8),
+        rgba(78,52,146,.8)
+    );
+    border: 1px solid rgba(179,136,255,.4);
+    border-radius: 20px;
+    padding: 25px;
+    transition: .4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.item-glosario::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top right,
+        rgba(130,177,255,.25),
+        transparent 60%
+    );
+}
+
+.item-glosario:hover{
+    transform: translateY(-10px);
+    box-shadow:
+        0 0 20px #7c4dff,
+        0 0 40px #448aff;
+}
+
+.item-glosario span{
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.item-glosario h3{
+    color: #82b1ff;
+    margin-bottom: 12px;
+}
+
+.item-glosario p{
+    color: #f3f3ff;
+    line-height: 1.6;
+}
+
+@media(max-width:768px){
+    .zona-glosario h2{
+        font-size: 2.2rem;
+    }
+}
+
+.contacto-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+padding:40px;
+}
+
+input,
+textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+}
+
+button{
+margin-top:10px;
+background:#2563eb;
+color:white;
+padding:12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#3b82f6;
+}
+
+.juego {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(#001f4d, #000);
+    color: white;
+    border-radius: 15px;
+    margin: 30px auto;
+    max-width: 800px;
+}
+
+.marcador {
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+#game-area {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: #0a0a23;
+    border: 3px solid gold;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.estrella {
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+    animation: brillo 1s infinite alternate;
+    user-select: none;
+}
+
+@keyframes brillo {
+    from {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px gold);
+    }
+    to {
+        transform: scale(1.3);
+        filter: drop-shadow(0 0 15px yellow);
+    }
+}
+
+#startBtn {
+    background: gold;
+    color: #000;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#startBtn:hover {
+    background: #ffd700;
+    transform: scale(1.05);
+}
+
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 20px;
+}
+
+.flecha {
+    background-color: gold;
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.flecha:hover {
+    transform: scale(1.1);
+    background-color: #ffd700;
+}
+
+footer {
+  background-color: #333333;
+  color: white;
+  padding: 30px;
+  margin-top: 40px;
+}
+.footer-col {
+  display: inline-block;
+  width: 45%;
+  vertical-align: top;
+}
+footer a {
+  color: white;
+  margin-right: 10px;
+  text-decoration: none;
+}
+footer button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 6px 15px;
+  border-radius: 4px;
+}
